@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Application d'administation d'un parc d'impression">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Printers App">
+
+    <title>Printa</title>
+
+    <!-- Place favicon.ico in the `app/` directory -->
+
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#78909c">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Tile color for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="PSK">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3372DF">
+    <meta name="apple-mobile-web-app-title" content="Printa App">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild-->
+
+    <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <!-- endbuild -->
+
+    <!-- Because this project uses vulcanize this should be your only html import in this file. All other imports should go in elements.html -->
+    <link rel="import" href="elements/elements.html">
+
+    <!-- For shared styles, shared-styles.html import in elements.html -->
+    <style is="custom-style" include="shared-styles"></style>
+</head>
+<body unresolved ng-app="printa">
+    <!-- build:remove -->
+    <span id="browser-sync-binding"></span>
+    <!-- endbuild -->
+
+    <paper-drawer-panel id="paperDrawerPanel">
+
+        <!-- Drawer Scroll Header Panel -->
+        <paper-scroll-header-panel drawer fixed>
+
+            <!-- Drawer Toolbar -->
+            <paper-toolbar id="drawerToolbar">
+                <img class="menu-img" src="images/printers.png" alt="" />
+            </paper-toolbar>
+
+            <paper-toolbar id="userToolbar">
+                <div class="user-img">
+                    <img src="images/profil/admin.png" alt=""/>
+                </div>
+                <div class="user-details"  ng-controller="UserController">
+                    <p class="user-name">{{user.first_name}} {{user.name}}</p>
+                    <p class="user-service">{{structure.acronym}}</p>
+                </div>
+
+            </paper-toolbar>
+
+            <!-- Drawer Content -->
+            <paper-menu class="app-menu">
+                <a ui-sref="home">
+                    <iron-icon icon="home"></iron-icon>
+                    <span>Accueil</span>
+                </a>
+
+                <a ui-sref="search">
+                    <iron-icon icon="search"></iron-icon>
+                    <span>Recherche</span>
+                </a>
+
+                <a ui-sref="view">
+                    <iron-icon icon="editor:insert-chart"></iron-icon>
+                    <span>Statistique</span>
+                </a>
+
+                <a ui-sref="install">
+                    <iron-icon icon="device:network-cell"></iron-icon>
+                    <span>Installation</span>
+                    <paper-badge for="number" label="4"></paper-badge>
+                </a>
+
+                <a ui-sref="manage">
+                    <iron-icon icon="view-headline"></iron-icon>
+                    <span>Gestion</span>
+                </a>
+            </paper-menu>
+        </paper-scroll-header-panel>
+
+        <!-- Main Area -->
+        <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
+            <!-- Main Toolbar -->
+            <paper-toolbar id="mainToolbar" class="tall">
+                <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+
+                <span class="space"></span>
+
+                <!-- Toolbar icons
+                <paper-icon-button icon="refresh"></paper-icon-button>-->
+                <paper-icon-button icon="help"></paper-icon-button>
+
+                <!-- Application name -->
+                <div id="header-title" class="middle middle-container">
+                    <div class="app-name">
+                        <img src="images/index.png" alt=""/>
+                        Printa
+                    </div>
+                </div>
+
+                <!-- Application sub title -->
+                <div id="header-sub-title" class="bottom bottom-container">
+                    <div class="bottom-title">Réconciliez vous avec les imprimantes</div>
+                </div>
+
+                <!-- Application icon -->
+                <div id="header-img" class="right right-container">
+                    <div class="right-title">
+                        <img src="images/anjou-blanc.png" alt=""/>
+                    </div>
+                </div>
+            </paper-toolbar>
+
+            <div class="content">
+                <!-- Import templates by ui.router -->
+                <div ui-view></div>
+            </div>
+        </paper-scroll-header-panel>
+    </paper-drawer-panel>
+
+
+    <script src="scripts/polymer.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
