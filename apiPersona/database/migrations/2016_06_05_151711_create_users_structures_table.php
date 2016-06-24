@@ -13,13 +13,19 @@ class CreateUsersStructuresTable extends Migration
     public function up()
     {
         Schema::create('users_structures', function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->integer('structure_id');
+
+            $table->engine = 'InnoDB';
+
+            $table->integer('user_id')->unsigned();
+            $table->integer('structure_id')->unsigned();
             $table->timestamp('created_at');
             $table->timestamp('finished_at')->nullable();
         });
 
         Schema::table('users_structures', function ($table) {
+
+            $table->engine = 'InnoDB';
+
             $table->primary(['user_id', 'structure_id']);
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('structure_id')->references('id')->on('structures');

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCostsDefaultsTable extends Migration
+class CreateLocationsTable extends Migration
 {
     /**
     * Run the migrations.
@@ -12,24 +12,23 @@ class CreateCostsDefaultsTable extends Migration
     */
     public function up()
     {
-        Schema::create('costs_defaults', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
 
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->integer('model_id');
-            $table->integer('page_id')->unsigned();
-            $table->float('amount');
+            $table->integer('name')->unique();
+            $table->integer('location_id')->unsigned();
             $table->timestamps();
-            $table->timestamp('finished_at')->nullable();
         });
 
-        Schema::table('costs_defaults', function ($table) {
+        Schema::table('locations', function ($table) {
 
             $table->engine = 'InnoDB';
 
-            $table->foreign('page_id')->references('id')->on('pages');
+            $table->foreign('location_id')->references('id')->on('locations');
         });
+
     }
 
     /**
@@ -39,6 +38,6 @@ class CreateCostsDefaultsTable extends Migration
     */
     public function down()
     {
-        Schema::drop('costs_defaults');
+        Schema::drop('locations');
     }
 }

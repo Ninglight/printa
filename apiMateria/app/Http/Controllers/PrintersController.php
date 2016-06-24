@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Printer;
-use App\Statu;
+use App\Location;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -27,25 +27,32 @@ class PrintersController extends Controller
         $name = $request->name;
         $serial_number = $request->serial_number;
         $inventory_number = $request->inventory_number;
-        $status_id = $request->status_id;
+        $location_id = $request->location_id;
 
+        $serial_number_test = Printer::where(['serial_number' => $serial_number])->get();
         $inventory_number_test = Printer::where(['inventory_number' => $inventory_number])->get();
-        $status = Statu::where(['id' => $trademark_id])->get();
+        $location = Location::where(['id' => $location_id])->get();
 
-        if($inventory_number_test->count() == 0 & $status->count() == 1) {
+        if($serial_number_test->count() == 0 & $inventory_number_test->count() == 0 & $location->count() == 1) {
 
             $printer = Printer::create([
                 'name' => $name,
-                'trademark_id' => $trademark_id
+                'serial_number' => $serial_number,
+                'inventory_number' => $inventory_number,
+                'location_id' => $location_id
             ]);
 
-        } elseif($inventory_number_test->count() == 0){
+        } elseif($serial_number_test->count() == 0 & $inventory_number_test->count() == 0){
 
-            return Response::json("Status not in database", 200, [], JSON_NUMERIC_CHECK);
+            return Response::json("Location not in database", 200, [], JSON_NUMERIC_CHECK);
 
-        } elseif($status->count() == 1) {
+        } elseif($serial_number_test->count() == 0 & $location->count() == 1) {
 
             return Response::json("Inventory Number exists", 200, [], JSON_NUMERIC_CHECK);
+
+        } elseif($location->count() == 1 & $inventory_number_test->count() == 0) {
+
+            return Response::json("Serial Number exists", 200, [], JSON_NUMERIC_CHECK);
 
         }
 
@@ -59,26 +66,32 @@ class PrintersController extends Controller
         $name = $request->name;
         $serial_number = $request->serial_number;
         $inventory_number = $request->inventory_number;
-        $status_id = $request->status_id;
+        $location_id = $request->location_id;
 
+        $serial_number_test = Printer::where(['serial_number' => $serial_number])->get();
         $inventory_number_test = Printer::where(['inventory_number' => $inventory_number])->get();
-        $status = Statu::where(['id' => $status_id])->get();
+        $location = Location::where(['id' => $location_id])->get();
 
-        if($inventory_number_test->count() == 0 & $status->count() == 1) {
+        if($serial_number_test->count() == 0 & $inventory_number_test->count() == 0 & $location->count() == 1) {
 
-            $printer->name = $name;
-            $printer->serial_number = $serial_number;
-            $printer->inventory_number = $inventory_number;
-            $printer->status_id = $status_id;
-            $printer->save();
+            $printer = Printer::create([
+                $printer->name = $name,
+                $printer->serial_number = $serial_number,
+                $printer->inventory_number = $inventory_number,
+                $printer->location_id = $location_id
+            ]);
 
-        } elseif($inventory_number_test->count() == 0) {
+        } elseif($serial_number_test->count() == 0 & $inventory_number_test->count() == 0){
 
-            return Response::json("Statu not in database", 200, [], JSON_NUMERIC_CHECK);
+            return Response::json("Location not in database", 200, [], JSON_NUMERIC_CHECK);
 
-        } elseif($status->count() == 1) {
+        } elseif($serial_number_test->count() == 0 & $location->count() == 1) {
 
             return Response::json("Inventory Number exists", 200, [], JSON_NUMERIC_CHECK);
+
+        } elseif($location->count() == 1 & $inventory_number_test->count() == 0) {
+
+            return Response::json("Serial Number exists", 200, [], JSON_NUMERIC_CHECK);
 
         }
 

@@ -6,33 +6,39 @@ use Illuminate\Database\Migrations\Migration;
 class CreateCommandsTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-     public function up()
-     {
-         Schema::create('commands', function (Blueprint $table) {
-             $table->increments('id');
-             $table->integer('action_id');
-             $table->integer('model_id')->nullable();
-             $table->integer('oid_id');
-             $table->timestamps();
-         });
+    * Run the migrations.
+    *
+    * @return void
+    */
+    public function up()
+    {
+        Schema::create('commands', function (Blueprint $table) {
 
-         Schema::table('commands', function ($table) {
-             $table->foreign('action_id')->references('id')->on('actions');
-             $table->foreign('oid_id')->references('id')->on('oids');
-         });
-     }
+            $table->engine = 'InnoDB';
 
-     /**
-      * Reverse the migrations.
-      *
-      * @return void
-      */
-     public function down()
-     {
-         Schema::drop('commands');
-     }
+            $table->increments('id');
+            $table->integer('action_id')->unsigned();
+            $table->integer('model_id')->nullable();
+            $table->integer('oid_id')->unsigned();
+            $table->timestamps();
+        });
+
+        Schema::table('commands', function ($table) {
+
+            $table->engine = 'InnoDB';
+
+            $table->foreign('action_id')->references('id')->on('actions');
+            $table->foreign('oid_id')->references('id')->on('oids');
+        });
+    }
+
+    /**
+    * Reverse the migrations.
+    *
+    * @return void
+    */
+    public function down()
+    {
+        Schema::drop('commands');
+    }
 }

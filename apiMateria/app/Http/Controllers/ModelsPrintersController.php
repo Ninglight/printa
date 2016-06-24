@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Response;
 class ModelsPrintersController extends Controller
 {
     public function index() {
-        $model_id = $request->model_id;
-        $printer_id = $request->printer_id;
+        $model_id = Input::get('model_id');
+        $printer_id = Input::get('printer_id');
 
         if($model_id & $printer_id){
 

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\PrintersStatu;
 use App\Statu;
-use App\Printer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,8 +13,8 @@ use Illuminate\Support\Facades\Response;
 class PrintersStatusController extends Controller
 {
     public function index() {
-        $status_id = $request->model_id;
-        $printer_id = $request->printer_id;
+        $status_id = Input::get('status_id');
+        $printer_id = Input::get('printer_id');
 
         if($status_id){
 
@@ -47,7 +46,7 @@ class PrintersStatusController extends Controller
 
         $status_id = $request->status_id;
 
-        $status_test = PrintersStatu::where(['id' => $status_id])->get();
+        $status_test = Statu::where(['id' => $status_id])->get();
 
         if($status_test->count() == 1) {
 

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\PrintersMaintenance;
 use App\Maintenance;
-use App\Printer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,8 +13,8 @@ use Illuminate\Support\Facades\Response;
 class PrintersMaintenancesController extends Controller
 {
     public function index() {
-        $maintenance_id = $request->$maintenance_id;
-        $printer_id = $request->printer_id;
+        $maintenance_id = Input::get('maintenance_id');
+        $printer_id = Input::get('printer_id');
 
         if($maintenance_id & $printer_id){
 
@@ -43,7 +42,7 @@ class PrintersMaintenancesController extends Controller
 
         $maintenance_id = $request->maintenance_id;
 
-        $maintenance_test = PrintersMaintenance::where(['id' => $maintenance_id])->get();
+        $maintenance_test = Maintenance::where(['id' => $maintenance_id])->get();
 
         if($maintenance_test->count() == 1) {
 

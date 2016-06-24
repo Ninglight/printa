@@ -13,15 +13,21 @@ class CreateStructuresTable extends Migration
     public function up()
     {
         Schema::create('structures', function (Blueprint $table) {
+
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
             $table->string('acronym')->unique();
             $table->string('name');
             $table->string('type');
-            $table->integer('structure_id')->nullable();
+            $table->integer('structure_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('structures', function ($table) {
+
+            $table->engine = 'InnoDB';
+
             $table->foreign('structure_id')->references('id')->on('structures');
         });
     }

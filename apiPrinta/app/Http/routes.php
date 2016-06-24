@@ -43,4 +43,6 @@ Route::group(['middleware' => ['web']], function() {
     Route::resource('printers_status', 'PrintersStatusController');
     Route::resource('maintenances', 'MaintenancesController');
     Route::resource('printers_maintenances', 'PrintersMaintenancesController');
+    Route::resource('permissions', 'PermissionsController');
+    Route::resource('users_permissions', 'UsersPermissionsController');
 });

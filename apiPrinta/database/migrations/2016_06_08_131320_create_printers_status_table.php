@@ -13,13 +13,19 @@ class CreatePrintersStatusTable extends Migration
     public function up()
     {
         Schema::create('printers_status', function (Blueprint $table) {
+
+            $table->engine = 'InnoDB';
+
             $table->integer('printer_id');
-            $table->integer('status_id');
+            $table->integer('status_id')->unsigned();
             $table->timestamp('created_at');
             $table->timestamp('finished_at')->nullable();
         });
 
-        Schema::table('printers_status', function ($table) {
+        Schema::table('printers_status', function (Blueprint $table) {
+
+            $table->engine = 'InnoDB';
+
             $table->primary(['printer_id', 'status_id']);
             $table->foreign('status_id')->references('id')->on('status');
         });

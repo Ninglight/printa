@@ -8,7 +8,7 @@ class Printer extends Eloquent\Model
 {
 
     protected $fillable = [
-        'name', 'serial_number', 'inventory_number'
+        'name', 'serial_number', 'inventory_number', 'location_id'
     ];
 
 }
