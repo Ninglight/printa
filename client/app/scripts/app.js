@@ -23,7 +23,7 @@ require('./Service/Persona/StructuresService');
 require('./Service/Materia/ModelsPrintersService');
 require('./Service/Materia/ModelsService');
 require('./Service/Materia/PrintersService');
-require('./Service/Materia/StatusService');
+require('./Service/Materia/LocationsService');
 require('./Service/Materia/TrademarksService');
 
 // Import Service from ApiPrinta
@@ -41,7 +41,17 @@ require('./Service/Printa/PrintingsService');
 require('./Service/Printa/SidesService');
 require('./Service/Printa/TypesErrorsService');
 require('./Service/Printa/TypesService');
+require('./Service/Printa/StatusService');
+require('./Service/Printa/PrintersStatusService');
+require('./Service/Printa/MaintenancesService');
+require('./Service/Printa/PrintersMaintenancesService');
+require('./Service/Printa/PermissionsService');
+require('./Service/Printa/UsersPermissionsService');
 
 // Import Controller
-require('./Controller/UsersController');
-require('./Controller/PrintersController');
+require('./Controller/IndexController');
+require('./Controller/HomeController');
+require('./Controller/SearchController');
+require('./Controller/InstallController');
+require('./Controller/ViewController');
+require('./Controller/ManageController');

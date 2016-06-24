@@ -112,7 +112,7 @@ gulp.task('fonts', function() {
 
 // Copy templates of ui router to dist
 gulp.task('templates', function() {
-    return gulp.src(['app/templates/**'])
+    return gulp.src(['app/templates/**/**'])
     .pipe($.htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(dist('templates')))
     .pipe($.size({
@@ -159,7 +159,7 @@ gulp.task('serve', ['styles', 'scripts', 'index', 'templates', 'images', 'vulcan
 
     gulp.watch(['app/elements/*.html', 'app/styles/*.html'], ['vulcanize', reload]);
     gulp.watch(['app/*.html', '!app/bower_components/**/*.html'], ['index', reload]);
-    gulp.watch(['app/templates/*.html'], ['templates', reload]);
+    gulp.watch(['app/templates/**/*.html'], ['templates', reload]);
     gulp.watch(['app/styles/**/*.css'], ['styles', reload]);
     gulp.watch(['app/scripts/**/**/*.js'], ['scripts', reload]);
     gulp.watch(['app/images/**/*'], ['images', reload]);

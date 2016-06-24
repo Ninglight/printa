@@ -2,37 +2,31 @@
 
     <div class="wrap horizontal">
         <paper-material class="mtrl-index" elevation="1">
-            <h1 class="page-title" tabindex="-1">Bienvenue sur Printa</h1>
-            <div class="mtrl-text">
-                <p>
-                    Application de gestion du parc d'impression.
-                </p>
+            <div class="mtrl-index-text">
+                <h1 class="page-title" tabindex="-1">Bienvenue sur Printa</h1>
+                <div class="mtrl-text">
+                    <p>
+                        Application de gestion du parc d'impression.
+                    </p>
+                </div>
             </div>
             <div class="wrap horizontal">
-                <paper-material class="mtrl-link-index mtrl-search" elevation="1">
-                    <img id="glass" src="images/section/search.svg" alt="Ajouter une imprimante"/>
-                    <p class="mtrl-text">
-                        Recherche
-                    </p>
-                </paper-material>
-                <paper-material class="mtrl-link-index mtrl-view" elevation="1">
-                    <img src="images/section/view.svg" alt="Ajouter une imprimante"/>
-                    <p class="mtrl-text">
-                        Statistique
-                    </p>
-                </paper-material>
-                <paper-material class="mtrl-link-index mtrl-install" elevation="1">
-                    <img src="images/section/install.svg" alt="Ajouter une imprimante"/>
-                    <p class="mtrl-text">
-                        Installation
-                    </p>
-                </paper-material>
-                <paper-material class="mtrl-link-index mtrl-manage" elevation="1">
-                    <img src="images/section/manage.svg" alt="Ajouter une imprimante"/>
-                    <p class="mtrl-text">
-                        Gestion
-                    </p>
-                </paper-material>
+                <div class="mtrl-index-box">
+                    <paper-material class="mtrl-index-link mtrl-search" elevation="1" ui-sref="search">
+                        <img id="glass" src="images/section/search.svg" alt="Ajouter une imprimante"/>
+                        <p class="mtrl-text">
+                            Recherche une imprimante
+                        </p>
+                    </paper-material>
+                </div>
+                <div class="mtrl-index-box">
+                    <paper-material class="mtrl-index-link mtrl-view" elevation="1" ui-sref="view">
+                        <img src="images/section/view.svg" alt="Ajouter une imprimante"/>
+                        <p class="mtrl-text">
+                            Visualiser les compteurs
+                        </p>
+                    </paper-material>
+                </div>
             </div>
         </paper-material>
 
@@ -42,7 +36,7 @@
             </div>
             <div class="mtrl-text">
                 <p>
-                    Afin de permettre une navigation plus agréable, l'accès aux fonctionnalité se fait via le menu de droite qui vous accompagne durant toute votre navigation.
+                    Afin de permettre une navigation plus agréable, l'accès aux fonctionnalités se fait via le menu de droite qui vous accompagne durant toute votre navigation.
                     Pour obtenir une aide supplémentaire, veuillez activer l'option "Aide", symbolisé par un point d'interrogation, situé en haut à droite de votre écran.
                 </p>
             </div>
@@ -75,7 +69,7 @@
             </template>
         </paper-dialog>
 
-        <paper-datatable-card id="datatableCard" header="Imprimantes les moins utilisées" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+        <paper-datatable-card id="datatableCard" header="Imprimantes les moins utilisées" page-size="10" data-source="{{printer}}" id-property="id" selected-ids="{{selectedIds}}">
             <div toolbar-main>
                 <paper-input value="{{searchTerm}}" on-input="retrieveResults" label="Search..." style="display:inline-block" no-label-float>
                     <div prefix>
@@ -131,14 +125,4 @@
         <google-chart type='area' options='{"title": "", "backgroundColor": "transparent"}' cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]' rows='[["Jan", 31],["Feb", 28],["Mar", 31]]'></google-chart>
     </paper-material>
 
-    <div class="wrap horizontal">
-        <paper-material class="mtrl_link_manage" elevation="1">
-            Imprimante
-            ( + Statut + modele + marque)
-            Module de gestion de commande dépend soit des imprimantes, soit des modeles.
-        </paper-material>
-        <paper-material class="mtrl_link_manage" elevation="1">
-            Utilisateur( + Structure )
-        </paper-material>
-    </div>
 </section>

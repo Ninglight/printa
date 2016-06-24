@@ -1,8 +1,75 @@
 <section tabindex="-1">
 
-    <paper-material elevation="1">
-        <h1 class="page-title" tabindex="-1">Gestion</h1>
-        <p>Gestion des données d'impression</p>
-    </paper-material>
-    
+    <div ui-view>
+
+        <div class="mtrl-intro" elevation="1">
+            <h1 class="page-title" tabindex="-1">Administration des données</h1>
+            <p>Gestion des données d'impression</p>
+        </div>
+
+        <div class="wrap horizontal">
+
+            <div class="list" role="listbox">
+                <paper-icon-item ui-sref="manage.error">
+                    <iron-icon icon="error" item-icon></iron-icon>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line>
+                        <div>Erreur</div>
+                        <div secondary>Gestion des erreurs d'exécution de DataPrinta</div>
+                    </paper-item-body>
+                </paper-icon-item>
+                <paper-item ui-sref="manage.snmp">
+                    <iron-icon icon="settings-input-component"></iron-icon>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line>
+                        <div>SNMP</div>
+                        <div secondary>Gestion des commandes SNMP pour les compteurs</div>
+                    </paper-item-body>
+                </paper-item>
+                <paper-item ui-sref="manage.cost">
+                    <iron-icon icon="editor:attach-money"></iron-icon>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line class="layout vertical">
+                        <div>Coût</div>
+                        <div secondary>Gestion des coûts d'impression</div>
+                    </paper-item-body>
+                </paper-item>
+                <paper-item ui-sref="manage.page">
+                    <iron-icon icon="content-copy"></iron-icon>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line class="layout vertical">
+                        <div>Page</div>
+                        <div secondary>Gestion de la définition d'une page</div>
+                    </paper-item-body>
+                </paper-item>
+                <paper-item ui-sref="manage.counter">
+                    <iron-icon icon="find-in-page"></iron-icon>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line class="layout vertical">
+                        <div>Compteur</div>
+                        <div secondary>Gestion des données d'impression</div>
+                    </paper-item-body>
+                </paper-item>
+                <paper-item ui-sref="manage.printer">
+                    <iron-icon icon="print"></iron-icon>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line class="layout vertical">
+                        <div>Imprimante</div>
+                        <div secondary>Gestion des imprimantes</div>
+                    </paper-item-body>
+                </paper-item>
+                <paper-item ui-sref="manage.user">
+                    <iron-icon icon="account-box"></iron-icon>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line class="layout vertical">
+                        <div>Utilisateur</div>
+                        <div secondary>Gestion des utilisateurs</div>
+                    </paper-item-body>
+                </paper-item>
+            </div>
+
+        </div>
+
+    </div>
+
 </section>

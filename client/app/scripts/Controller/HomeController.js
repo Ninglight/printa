@@ -1,10 +1,4 @@
-angular.module('printa').controller('PrintersController', function ($scope, PrintersService){
-
-    $scope.printers = PrintersService.getPrinters();
-
-});
-
-angular.module('printa').controller('PrinterController', function ($scope, PrintersService, ModelsPrintersService, ModelsService, StatusService, TrademarksService){
+angular.module('printa').controller('HomeTableController', function ($scope, PrintersService, ModelsPrintersService, ModelsService, StatusService, TrademarksService){
 
     var printer = PrintersService.getPrinter(1);
     $scope.printer = printer.$object;

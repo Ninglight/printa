@@ -1,9 +1,3 @@
-angular.module('printa').controller('UsersController', function ($scope, UsersService){
-
-    $scope.users = UsersService.getUsers();
-
-});
-
 angular.module('printa').controller('UserController', function ($scope, UsersService, UsersStructuresService, StructuresService){
 
     var user = UsersService.getUser(1);

@@ -75,31 +75,32 @@
 
             <!-- Drawer Content -->
             <paper-menu class="app-menu">
-                <a ui-sref="home">
+                <paper-item ui-sref="home">
                     <iron-icon icon="home"></iron-icon>
                     <span>Accueil</span>
-                </a>
+                </paper-item>
 
-                <a ui-sref="search">
+                <paper-item ui-sref="search">
                     <iron-icon icon="search"></iron-icon>
                     <span>Recherche</span>
-                </a>
+                </paper-item>
 
-                <a ui-sref="view">
+                <paper-item ui-sref="view">
                     <iron-icon icon="editor:insert-chart"></iron-icon>
                     <span>Statistique</span>
-                </a>
+                </paper-item>
 
-                <a ui-sref="install">
+                <paper-item ui-sref="install">
                     <iron-icon icon="device:network-cell"></iron-icon>
                     <span>Installation</span>
                     <paper-badge for="number" label="4"></paper-badge>
-                </a>
+                </paper-item>
 
-                <a ui-sref="manage">
+                <paper-item ui-sref="manage">
                     <iron-icon icon="view-headline"></iron-icon>
-                    <span>Gestion</span>
-                </a>
+                    <span>Administration</span>
+                </paper-item>
+
             </paper-menu>
         </paper-scroll-header-panel>
 
@@ -111,8 +112,7 @@
 
                 <span class="space"></span>
 
-                <!-- Toolbar icons
-                <paper-icon-button icon="refresh"></paper-icon-button>-->
+                <!-- Toolbar icons -->
                 <paper-icon-button icon="help"></paper-icon-button>
 
                 <!-- Application name -->

@@ -1,13 +1,13 @@
-angular.module('printa').service('StatusService', ['Restangular', 'MateriaRestangular', function(Restangular, MateriaRestangular) {
+angular.module('printa').service('StatusService', ['Restangular', 'PrintaRestangular', function(Restangular, PrintaRestangular) {
 
-    let status = MateriaRestangular.all('status');
+    let status = PrintaRestangular.all('status');
 
     return {
         getStatus: function(){
             return status.getList().$object;
         },
         getStatu: function(id){
-            return MateriaRestangular.one('status', id).get();
+            return PrintaRestangular.one('status', id).get();
         },
         newStatu: function(statuData){
             return status.post(statuData);

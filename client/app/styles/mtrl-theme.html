@@ -14,7 +14,7 @@
 
     --search-color: var(--paper-blue-grey-50);
     --view-color: var(--paper-deep-orange-100);
-    --install-color: var(--paper-light-green-100);
+    --install-color: var(--paper-green-100);
     --manage-color: var(--paper-deep-purple-100);
     --help-color: var(--paper-amber-100);
     --admin-color: var(--paper-red-100);
@@ -66,24 +66,38 @@
 /* Index */
 
 .mtrl-index {
-    margin: 10px;
-    width: 550px;
-    height: 500px;
+    width: 560px;
+    padding: 0;
 }
 
-.mtrl-link-index {
+.mtrl-index-text {
+    padding: 20px;
+}
+
+.mtrl-index-box {
     text-align: center;
-    width: 80px;
-    height: 100px;
+    width: 50%;
+    margin:0;
+    padding: 0;
 }
 
-.mtrl-link-index img {
-    width: 80px;
-    max-height: 80px;
+.mtrl-index-link {
+    text-align: center;
+    width: 100%;
+    margin:0;
+    padding: 0;
 }
 
-.mtrl-link-index p {
-    margin:0
+.mtrl-index-link img {
+    width: 120px;
+    max-height: 120px;
+    margin: 30px
+}
+
+.mtrl-index-link p {
+    margin:0;
+    background-color: rgba(130, 130, 130, 0.7);
+    color: white;
 }
 
 
@@ -102,6 +116,34 @@
     -webkit-transform: rotate(-35deg); /* Chrome, Safari, Opera */
     transform: rotate(-35deg);
 }
+
+/* Intro category */
+
+.mtrl-intro {
+    width: 99%;
+    margin-top: 0;
+    background-color: var(--paper-blue-grey-500);
+    color: white;
+    padding: 30px 0 15px 10px;
+}
+
+.mtrl-intro .page-title {
+    margin: 0;
+}
+
+.mtrl-intro p {
+    margin-left: 30px;
+}
+
+.mtrl-intro hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #bbb;
+    margin: 1em 0;
+    padding: 0;
+}
+
 
 /* Search */
 
@@ -154,10 +196,37 @@
 
 /* Manage */
 
-.mtrl_link_manage {
-    width: 200px;
-    height: 300px;
+.list {
+  padding-top: 12px;
+  background-color: white;
+  display: inline-block;
+  width: 100%;
+  margin: 12px;
+  @apply(--shadow-elevation-2dp);
 }
 
+paper-icon-item  {
+    --paper-item-icon-width: 50px;
+}
+
+paper-icon-item  {
+    --paper-icon-item: {
+        iron-icon: {
+            margin-left: 100px;
+        }
+    }
+}
+
+.mtrl-manage-return {
+    text-align: left;
+}
+
+
+.mtrl-manage-return paper-button {
+    --paper-button: {
+        color: #f47c5e;
+        background-color: var(--paper-blue-grey-600);
+    }
+}
 
 </style>
