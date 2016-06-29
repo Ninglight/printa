@@ -1,12 +1,13 @@
 require('angular');
 require('angular-ui-router');
 require('restangular');
+require('angular-material');
 
 // dependencie of Restangular
 const _ = require('lodash');
 
 // Declaration of dependencies
-angular.module('printa', ['ui.router', 'restangular']);
+angular.module('printa', ['ui.router', 'restangular', 'ngMaterial']);
 
 // Import Restangular base configuration
 require('./base');

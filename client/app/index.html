@@ -57,88 +57,18 @@
         <!-- Drawer Scroll Header Panel -->
         <paper-scroll-header-panel drawer fixed>
 
-            <!-- Drawer Toolbar -->
-            <paper-toolbar id="drawerToolbar">
-                <img class="menu-img" src="images/printers.png" alt="" />
-            </paper-toolbar>
+            <div ui-view="left"></div>
 
-            <paper-toolbar id="userToolbar">
-                <div class="user-img">
-                    <img src="images/profil/admin.png" alt=""/>
-                </div>
-                <div class="user-details"  ng-controller="UserController">
-                    <p class="user-name">{{user.first_name}} {{user.name}}</p>
-                    <p class="user-service">{{structure.acronym}}</p>
-                </div>
-
-            </paper-toolbar>
-
-            <!-- Drawer Content -->
-            <paper-menu class="app-menu">
-                <paper-item ui-sref="home">
-                    <iron-icon icon="home"></iron-icon>
-                    <span>Accueil</span>
-                </paper-item>
-
-                <paper-item ui-sref="search">
-                    <iron-icon icon="search"></iron-icon>
-                    <span>Recherche</span>
-                </paper-item>
-
-                <paper-item ui-sref="view">
-                    <iron-icon icon="editor:insert-chart"></iron-icon>
-                    <span>Statistique</span>
-                </paper-item>
-
-                <paper-item ui-sref="install">
-                    <iron-icon icon="device:network-cell"></iron-icon>
-                    <span>Installation</span>
-                    <paper-badge for="number" label="4"></paper-badge>
-                </paper-item>
-
-                <paper-item ui-sref="manage">
-                    <iron-icon icon="view-headline"></iron-icon>
-                    <span>Administration</span>
-                </paper-item>
-
-            </paper-menu>
         </paper-scroll-header-panel>
 
         <!-- Main Area -->
         <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
-            <!-- Main Toolbar -->
-            <paper-toolbar id="mainToolbar" class="tall">
-                <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
-
-                <span class="space"></span>
-
-                <!-- Toolbar icons -->
-                <paper-icon-button icon="help"></paper-icon-button>
-
-                <!-- Application name -->
-                <div id="header-title" class="middle middle-container">
-                    <div class="app-name">
-                        <img src="images/index.png" alt=""/>
-                        Printa
-                    </div>
-                </div>
-
-                <!-- Application sub title -->
-                <div id="header-sub-title" class="bottom bottom-container">
-                    <div class="bottom-title">Réconciliez vous avec les imprimantes</div>
-                </div>
-
-                <!-- Application icon -->
-                <div id="header-img" class="right right-container">
-                    <div class="right-title">
-                        <img src="images/anjou-blanc.png" alt=""/>
-                    </div>
-                </div>
-            </paper-toolbar>
+            <!-- Import header by ui.router -->
+            <div ui-view="header"></div>
 
             <div class="content">
-                <!-- Import templates by ui.router -->
-                <div ui-view></div>
+                <!-- Import main by ui.router -->
+                <div ui-view="main"></div>
             </div>
         </paper-scroll-header-panel>
     </paper-drawer-panel>

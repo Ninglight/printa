@@ -157,7 +157,7 @@ gulp.task('serve', ['styles', 'scripts', 'index', 'templates', 'images', 'vulcan
         }
     });
 
-    gulp.watch(['app/elements/*.html', 'app/styles/*.html'], ['vulcanize', reload]);
+    gulp.watch(['app/elements/*.html', 'app/styles/*.html'], ['vulcanize', 'styles', reload]);
     gulp.watch(['app/*.html', '!app/bower_components/**/*.html'], ['index', reload]);
     gulp.watch(['app/templates/**/*.html'], ['templates', reload]);
     gulp.watch(['app/styles/**/*.css'], ['styles', reload]);

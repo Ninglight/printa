@@ -1,0 +1,37 @@
+<!-- Main Toolbar -->
+<paper-toolbar id="mainToolbar" class="tall">
+
+    <!-- Main Toolbar -->
+    <paper-toolbar id="mainToolbar" class="tall">
+        <!-- Import header by ui.router -->
+        <div ui-view="header"></div>
+    </paper-toolbar>
+
+    <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+
+    <span class="space"></span>
+
+    <!-- Toolbar icons -->
+    <paper-icon-button icon="home" ui-sref="home"></paper-icon-button>
+    <paper-icon-button icon="help"></paper-icon-button>
+
+    <!-- Application name -->
+    <div id="header-title" class="middle middle-container">
+        <div class="app-name">
+            {{name}}
+        </div>
+    </div>
+
+    <!-- Application sub title -->
+    <div id="header-sub-title" class="bottom bottom-container">
+        <div class="bottom-title">{{subname}}</div>
+    </div>
+
+    <!-- Application icon -->
+    <div id="header-img" class="right right-container">
+        <div class="right-title">
+            <img src="images/anjou-blanc.png" alt=""/>
+        </div>
+    </div>
+
+</paper-toolbar>

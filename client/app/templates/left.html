@@ -1,0 +1,46 @@
+<!-- Drawer Toolbar -->
+<paper-toolbar id="drawerToolbar">
+    <img class="menu-img" src="images/printers.png" alt="" />
+    <h1 class="menu-name" >Printa</h1>
+</paper-toolbar>
+
+<paper-toolbar id="userToolbar">
+    <div class="user-img">
+        <img src="images/profil/admin.png" alt=""/>
+    </div>
+    <div class="user-details"  ng-controller="UserController">
+        <p class="user-name">{{user.first_name}} {{user.name}}</p>
+        <p class="user-service">{{structure.acronym}}</p>
+    </div>
+
+</paper-toolbar>
+
+<!-- Drawer Content -->
+<paper-menu class="app-menu">
+    <paper-item ui-sref="home">
+        <iron-icon icon="home"></iron-icon>
+        <span>Accueil</span>
+    </paper-item>
+
+    <paper-item ui-sref="search">
+        <iron-icon icon="search"></iron-icon>
+        <span>Recherche</span>
+    </paper-item>
+
+    <paper-item ui-sref="view">
+        <iron-icon icon="editor:insert-chart"></iron-icon>
+        <span>Statistique</span>
+    </paper-item>
+
+    <paper-item ui-sref="install">
+        <iron-icon icon="device:network-cell"></iron-icon>
+        <span>Installation</span>
+        <paper-badge for="number" label="4"></paper-badge>
+    </paper-item>
+
+    <paper-item ui-sref="manage">
+        <iron-icon icon="view-headline"></iron-icon>
+        <span>Administration</span>
+    </paper-item>
+
+</paper-menu>
