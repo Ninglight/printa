@@ -5,14 +5,19 @@
 </paper-toolbar>
 
 <paper-toolbar id="userToolbar">
-    <div class="user-img">
-        <img src="images/profil/admin.png" alt=""/>
+    <div class="user" ng-if="authenticated">
+        <div class="user-img">
+            <img src="images/profil/admin.png" alt=""/>
+        </div>
+        <div class="user-details">
+            <p class="user-name">{{currentUser.first_name}} {{currentUser.name}}</p>
+            <p class="user-service">{{currentUserStructure.acronym}}</p>
+        </div>
     </div>
-    <div class="user-details"  ng-controller="UserController">
-        <p class="user-name">{{user.first_name}} {{user.name}}</p>
-        <p class="user-service">{{structure.acronym}}</p>
+    <div class="alert alert-danger" ng-if="user.error">
+        <strong>There was an error: </strong> {{user.error.error}}
+        <br>Please go back and login again
     </div>
-
 </paper-toolbar>
 
 <!-- Drawer Content -->

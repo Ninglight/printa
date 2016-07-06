@@ -1,10 +1,10 @@
-angular.module('printa').controller('UserController', function ($scope, UsersService, UsersStructuresService, StructuresService){
+angular.module('printa').controller('UsersController', function ($scope, UsersService, UsersStructuresService, StructuresService){
 
-    var user = UsersService.getUser(1);
-    $scope.user = user.$object;
+    var user = UsersService.getUser('v.bourreau');
 
     user.then(function (result) {
 
+        $scope.user = result[0];
         var userstructure = UsersStructuresService.getUserStructure(result.id);
 
         userstructure.then(function (result) {

@@ -24,8 +24,9 @@ class UsersController extends Controller
         return Response::json($users, 200, [], JSON_NUMERIC_CHECK);
     }
 
-    public function show($id) {
-        $user = User::find($id);
+    public function show() {
+        $user_login = Input::get('login');
+        $user = User::where(['login' => $user_login])->get();
         return Response::json($user, 200, [], JSON_NUMERIC_CHECK);
     }
 

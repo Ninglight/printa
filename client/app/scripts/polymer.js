@@ -45,7 +45,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     // paper-datatable
 
-    var table = document.querySelector('.mtrl-table');
+    /*var table = document.querySelector('.mtrl-table');
 
     table.data = {
         queryForIds: function(sort, page, pageSize){
@@ -116,6 +116,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     table.retrieveResults = function(ev){
         app.$.datatableCard.retrieveVisibleData();
-    };
+    };*/
 
 })(document);

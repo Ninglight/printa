@@ -85,15 +85,24 @@ body {
     font-weight: 300;
 }
 
+#topBar {
+    padding-right: 0px;
+}
+
 #userToolbar {
-    padding-top: 20px;
     height: 100px;
     background-color: var(--paper-blue-grey-700);
+    padding-top: 20px;
+}
+
+#userToolbar .user {
+    height: 100%;
+    width: 100%;
 }
 
 #userToolbar .user-img {
+    float: left;
     width: 30%;
-    margin-right: 10px;
 }
 
 #userToolbar .user-img img {
@@ -101,8 +110,12 @@ body {
 }
 
 #userToolbar .user-details {
-    font-size: 15px;
     font-weight: 300;
+    margin-left: 35%;
+}
+
+#userToolbar .user-details .user-name {
+    margin-top: 10px;
 }
 
 paper-scroll-header-panel {

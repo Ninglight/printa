@@ -20,7 +20,7 @@ class CreateStructuresTable extends Migration
             $table->string('acronym')->unique();
             $table->string('name');
             $table->string('type');
-            $table->integer('structure_id')->unsigned();
+            $table->integer('structure_id')->nullable();
             $table->timestamps();
         });
 

@@ -6,8 +6,8 @@ angular.module('printa').service('UsersService', ['Restangular', 'PersonaRestang
         getUsers: function(){
             return users.getList().$object;
         },
-        getUser: function(id){
-            return PersonaRestangular.one('users', id).get();
+        getUser: function(login){
+            return PersonaRestangular.one('users').get({login : login});
         }
     }
 

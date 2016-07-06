@@ -1,13 +1,16 @@
 require('angular');
 require('angular-ui-router');
 require('restangular');
+require('satellizer');
 require('angular-material');
+require("angular-uuid");
+require("angular-md5");
 
 // dependencie of Restangular
 const _ = require('lodash');
 
 // Declaration of dependencies
-angular.module('printa', ['ui.router', 'restangular', 'ngMaterial']);
+angular.module('printa', ['ui.router', 'restangular', 'satellizer', 'ngMaterial', 'angular-uuid', 'angular-md5']);
 
 // Import Restangular base configuration
 require('./base');
@@ -50,6 +53,9 @@ require('./Service/Printa/PermissionsService');
 require('./Service/Printa/UsersPermissionsService');
 
 // Import Controller
+require('./Controller/AuthController');
+require('./Controller/UserController');
+
 require('./Controller/IndexController');
 require('./Controller/HomeController');
 require('./Controller/SearchController');

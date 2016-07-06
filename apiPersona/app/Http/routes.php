@@ -11,25 +11,20 @@
 |
 */
 
-// CORS
-if( ! $this->app->environment('testing')) {
-    header('Access-Control-Allow-Origin: ' . env('CORS_ORIGIN', '*') );
-    header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE, PATCH');
-    header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
-    header('Access-Control-Allow-Credentials: true');
-}
-
-// CORS
-//header('Access-Control-Allow-Origin: *');
-//header('Access-Control-Allow-Credentials: true');
-
 Route::get('/', function () {
     return view('welcome');
-
 });
 
-Route::group(['middleware' => ['web']], function() {
+Route::group(['middleware' => ['web', 'cors']], function() {
     Route::resource('users', 'UsersController');
     Route::resource('structures', 'StructuresController');
     Route::resource('users_structures', 'UsersStructuresController');
+});
+
+Route::group(['prefix' => 'api', 'middleware' => 'cors'], function()
+{
+    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+    Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
+
 });

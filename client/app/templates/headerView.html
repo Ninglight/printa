@@ -11,20 +11,28 @@
 
     <span class="space"></span>
 
-    <!-- Toolbar icons -->
-    <paper-icon-button icon="home" ui-sref="home"></paper-icon-button>
-    <paper-icon-button icon="help"></paper-icon-button>
+    <div ng-controller="UserController as user">
+        <!-- Toolbar icons -->
+        <paper-icon-button id="btn-home" icon="home" ui-sref="home"></paper-icon-button>
+        <paper-icon-button id="btn-help" icon="help"></paper-icon-button>
+        <paper-icon-button id="btn-logout" icon="power-settings-new" ng-click="user.logout()"></paper-icon-button>
+
+        <paper-tooltip for="btn-home" position="bottom" animation-delay="0">Accueil</paper-tooltip>
+        <paper-tooltip for="btn-help" position="bottom" animation-delay="0">Aide</paper-tooltip>
+        <paper-tooltip for="btn-logout" position="bottom" animation-delay="0">Déconnection</paper-tooltip>
+    </div>
 
     <!-- Application name -->
     <div id="header-title" class="middle middle-container">
         <div class="app-name">
+            <img ng-if="icon" src="images/index.png" alt=""/>
             {{name}}
         </div>
     </div>
 
     <!-- Application sub title -->
     <div id="header-sub-title" class="bottom bottom-container">
-        <div class="bottom-title">{{subname}}</div>
+        <div ng-if="subname" class="bottom-title">{{subname}}</div>
     </div>
 
     <!-- Application icon -->
