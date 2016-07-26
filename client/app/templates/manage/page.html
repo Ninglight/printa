@@ -4,5 +4,294 @@
         <h2><iron-icon icon="hardware:keyboard-arrow-left" ></iron-icon>Gestion des définition d'une page</h2>
     </div>
 
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouvelle page : </h4>
+        <table>
+            <tr>
+                <th>Type : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Copie</paper-item>
+                            <paper-item>Impression</paper-item>
+                            <paper-item>Scan</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+            <tr>
+                <th>Format : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>A4</paper-item>
+                            <paper-item>A3</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+            <tr>
+                <th>Côté : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Recto</paper-item>
+                            <paper-item>Recto & Verso</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+            <tr>
+                <th>Couleur : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Couleur</paper-item>
+                            <paper-item>Noir & Blanc</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Page" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.add()" raised>Nouvelle page</paper-button>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>type
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune page...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Type" property="type" type="String" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Format" property="format" type="String" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Côté" property="side" type="String" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Couleur" property="color" type="String" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouveau Type</h4>
+        <table>
+            <tr>
+                <th>Nom : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Type page" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.add()" raised>Nouveau type</paper-button>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucun type...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Nom" property="name" type="Object" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouveau Format</h4>
+        <table>
+            <tr>
+                <th>Nom : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Format page" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.add()" raised>Nouveau format</paper-button>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucun format...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Nom" property="name" type="Object" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouveau Côté</h4>
+        <table>
+            <tr>
+                <th>Nom : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Côté page" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.add()" raised>Nouveau côté</paper-button>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucun côté...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Nom" property="name" type="Object" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouveau Couleur</h4>
+        <table>
+            <tr>
+                <th>Nom : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Couleur page" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.add()" raised>Nouveau couleur</paper-button>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune couleur...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Nom" property="name" type="Object" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+
+
 
 </section>

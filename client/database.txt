@@ -1,0 +1,140 @@
+Bases de données
+Rapport Technique
+
+Base de données de test Persona (“annuaire” du serveur Tribu)
+
+Structures
+id, acronym (UNIQUE), name, type, structure_id (NULL, FOREIGN_KEY), created_at, updated_at.
+
+Users_structures
+user_id (FOREIGN_KEY), structure_id (FOREIGN_KEY), created_at, finished_at (NULL).
+
+Users
+id, first_name, name, num (UNIQUE), login (UNIQUE), phone, email (UNIQUE), password, created_at, updated_at.
+
+Données réelles Annuaire
+
+Structures
+Id_structure, Sigle (UNIQUE), Libelle, Type, ID_parent (FOREIGN_KEY).
+
+HUtilStruct
+Id_structure (FOREIGN_KEY), Matricule (FOREIGN_KEY), created_at, finished_at.
+
+Utilisateur
+Matricule (UNIQUE), Prenom, Nom, Num_myfair, Date_cre, Date_maj.
+
+Droits
+Login, Matricule (FOREIGN_KEY), Upn
+
+? PASSWORD
+
+Base de données de test Materia (“glpi” du serveur GLPI)
+
+Locations
+id, name (UNIQUE), location_id (NULL, FOREIGN_KEY), created_at, updated_at.
+
+Printers
+id, name, serial_number (UNIQUE), inventory_number (UNIQUE), location_id (FOREIGN_KEY), created_at, updated_at.
+
+Trademarks
+id, name, created_at, updated_at.
+
+Models
+id, name, trademarks_id (FOREIGN_KEY), created_at, updated_at.
+
+Models_printers
+model_id (FOREIGN_KEY), printer_id (FOREIGN_KEY), created_at, finished_at (NULL).
+
+Données réelles GLPI
+
+glpi_locations
+id, name (UNIQUE), locations_id.
+
+glpi_printers
+id, name, serial, otherserial, locations_id (FOREIGN_KEY), date_mod.
+
+glpi_printermodels
+id, name
+
+? GESTION TRADEMARKS
+
+Base de données Printa
+
+Permissions
+id, name (UNIQUE), created_at, updated_at.
+
+Status
+id, name (UNIQUE), created_at, updated_at.
+
+Users_Permissions
+user_id (FOREIGN_KEY), permission_id (FOREIGN_KEY), created_at, updated_at.
+
+Printers_Status
+printer_id (FOREIGN_KEY), status_id (FOREIGN_KEY), created_at, finished_at (NULL).
+
+Formats
+id, name (UNIQUE), created_at, updated_at.
+
+Sides
+id, name (UNIQUE), created_at, updated_at.
+
+Colors
+id, name (UNIQUE), created_at, updated_at.
+
+Types
+id, name (UNIQUE), created_at, updated_at.
+
+Oids
+id, value (UNIQUE), created_at, updated_at.
+
+Pages
+id, type_id (FOREIGN_KEY), format_id (FOREIGN_KEY), side_id (FOREIGN_KEY), color_id (FOREIGN_KEY), created_at, updated_at.
+
+Printings
+id, user_id, printer_id, created_at, quantity, page_id (FOREIGN_KEY).
+
+Counters
+id, printer_id, created_at, quantity, page_id (FOREIGN_KEY).
+
+Actions
+id, name (UNIQUE), page_id (FOREIGN_KEY), created_at, updated_at.
+
+Costs
+id, printer_id, page_id (FOREIGN_KEY), amount, created_at, updated_at, finished_at (NULL).
+
+Costs_default
+id, model_id, page_id (FOREIGN_KEY), amount, created_at, updated_at, finished_at (NULL).
+
+Commands
+id, action_id (FOREIGN_KEY), model_id (NULL), oid_id (FOREIGN_KEY), created_at, updated_at.
+
+Commands_default
+id, action_id (FOREIGN_KEY), trademark_id (NULL), model_id (NULL), oid_id (FOREIGN_KEY), created_at, updated_at.
+
+Types_errors
+id, name, direction, created_at, updated_at.
+
+Errors
+id, types_error_id, target_table, target_column (NULL), info (NULL), treated (Default =”false”), created_at, updated_at.
+
+Maintenance
+id, name (UNIQUE), created_at, updated_at.
+
+Printers_Maintenance
+printer_id (FOREIGN_KEY), maintenance_id (FOREIGN_KEY), created_at, finished_at (NULL).
+
+Tickets
+id, infos, printer_id (FOREIGN_KEY), created_at, updated_at, finished_at (NULL), ticket_status_id.
+
+Tickets_Status
+id, name (UNIQUE).
+
+Trademarks
+id, name, created_at, updated_at.
+
+Models_Trademarks
+id, name, created_at, updated_at.
+
+
+Pour la recherche par localisation, affiché une liste complète avec tous les arborescences,
+Ex : Angers > Hotel du département > DLSI.

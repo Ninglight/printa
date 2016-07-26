@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Response;
 class PrintersController extends Controller
 {
     public function index() {
+        if(Input::get('location_id')){
+            $printers = Printer::where(['location_id' => Input::get('location_id')])->get();
+            return Response::json($printers, 200, [], JSON_NUMERIC_CHECK);
+        }
         $printers = Printer::get();
         return Response::json($printers, 200, [], JSON_NUMERIC_CHECK);
     }

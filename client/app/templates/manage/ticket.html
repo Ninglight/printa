@@ -1,0 +1,104 @@
+<section tabindex="-1">
+
+    <div class="mtrl-intro" ui-sref="manage">
+        <h2><iron-icon icon="hardware:keyboard-arrow-left" ></iron-icon>Gestion des billets d'installation d'imprimantes</h2>
+    </div>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouveau Ticket</h4>
+        <table>
+            <tr>
+                <th>Informations : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+            <tr>
+                <th>Marques : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Angers...</paper-item>
+                            <paper-item>Saumur...</paper-item>
+                            <paper-item>Baugé...</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+            <tr>
+                <th>Modèles : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Angers...</paper-item>
+                            <paper-item>Saumur...</paper-item>
+                            <paper-item>Baugé...</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+            <tr>
+                <th>Imprimantes : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Angers...</paper-item>
+                            <paper-item>Saumur...</paper-item>
+                            <paper-item>Baugé...</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+            <tr>
+                <th>Statuts : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Installation</paper-item>
+                            <paper-item>Mise en réseau</paper-item>
+                            <paper-item>Déclaration sur le serveur d'impression</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-view-datatable" id="datatableCard" header="Tickets" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-dropdown-menu label="Etat">
+                    <paper-listbox class="dropdown-content" selected="0">
+                        <paper-item>Installation</paper-item>
+                        <paper-item>Mise en réseau</paper-item>
+                        <paper-item>Déclaration sur le serveur d'impression</paper-item>
+                        <paper-item>Tous</paper-item>
+                        <paper-item>Achevés</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucun ticket...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable align="center" style="min-width: 40px" sorted></paper-datatable-column>
+                <paper-datatable-column header="Informations" property="info" type="String" tooltip="Some title" sortable style="min-width: 160px" sorted></paper-datatable-column>
+                <paper-datatable-column header="Imprimante" property="printer" type="String" tooltip="Some title" sortable style="min-width: 40px" sorted></paper-datatable-column>
+                <paper-datatable-column header="Statut" property="status" type="Integer" sortable tooltip="Some title" dialog format-value="{{clip}}" edit-icon></paper-datatable-column>
+                <paper-datatable-column header="Date de creation" property="created_at" type="Date" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon></paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+
+    </div>
+
+</section>

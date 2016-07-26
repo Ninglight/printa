@@ -4,5 +4,78 @@
         <h2><iron-icon icon="hardware:keyboard-arrow-left" ></iron-icon>Gestion des données d'impression</h2>
     </div>
 
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Données d'impression" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-dropdown-menu label="Mois des impressions">
+                    <paper-listbox class="dropdown-content" selected="0">
+                        <paper-item>Juillet 2016</paper-item>
+                        <paper-item>Juin 2016</paper-item>
+                        <paper-item>Mai 2016</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+                <paper-input value="{{searchTerm}}" on-input="retrieveResults" label="Search..." style="display:inline-block" no-label-float>
+                    <div prefix>
+                        <iron-icon icon="search"></iron-icon>
+                    </div>
+                </paper-input>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune impression...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted></paper-datatable-column>
+                <paper-datatable-column header="Utilisateur" property="name" type="Object" tooltip="Some title" sortable></paper-datatable-column>
+                <paper-datatable-column header="Imprimante" property="created_at" type="Date" tooltip="Some title" sortable></paper-datatable-column>
+                <paper-datatable-column header="Date d'impression" property="quantity" type="Integer" sortable tooltip="Some title" dialog format-value="{{clip}}" edit-icon></paper-datatable-column>
+                <paper-datatable-column header="Couleur" property="format" type="String" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon></paper-datatable-column>
+                <paper-datatable-column header="Date de création" property="color" type="String" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon></paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Données de compteur" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-dropdown-menu label="Mois des compteurs">
+                    <paper-listbox class="dropdown-content" selected="0">
+                        <paper-item>Juillet 2016</paper-item>
+                        <paper-item>Juin 2016</paper-item>
+                        <paper-item>Mai 2016</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+                <paper-input value="{{searchTerm}}" on-input="retrieveResults" label="Search..." style="display:inline-block" no-label-float>
+                    <div prefix>
+                        <iron-icon icon="search"></iron-icon>
+                    </div>
+                </paper-input>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune impression...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted></paper-datatable-column>
+                <paper-datatable-column header="Imprimante" property="created_at" type="Date" tooltip="Some title" sortable></paper-datatable-column>
+                <paper-datatable-column header="Date d'impression" property="quantity" type="Integer" sortable tooltip="Some title" dialog format-value="{{clip}}" edit-icon></paper-datatable-column>
+                <paper-datatable-column header="Couleur" property="format" type="String" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon></paper-datatable-column>
+                <paper-datatable-column header="Date de création" property="color" type="String" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon></paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
 
 </section>

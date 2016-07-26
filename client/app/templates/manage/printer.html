@@ -4,5 +4,253 @@
         <h2><iron-icon icon="hardware:keyboard-arrow-left" ></iron-icon>Gestion des impimantes</h2>
     </div>
 
+    <div class="mtrl-manage-list" role="listbox">
+        <h3>Imprimantes n'ayant pas de marque référencée</h3>
+        <hr>
+        <paper-icon-item >
+            <iron-icon icon="print" item-icon></iron-icon>
+            <iron-icon></iron-icon>
+            <paper-item-body two-line>
+                <div>copdsi01 : Konica Minolta E1548754</div>
+                <div secondary>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Type 1</paper-item>
+                            <paper-item>Type 2</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </div>
+            </paper-item-body>
+        </paper-icon-item>
+        <paper-icon-item >
+            <iron-icon icon="print" item-icon></iron-icon>
+            <iron-icon></iron-icon>
+            <paper-item-body two-line>
+                <div>copdsi01 : Konica Minolta E1548754</div>
+                <div secondary>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Type 1</paper-item>
+                            <paper-item>Type 2</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </div>
+            </paper-item-body>
+        </paper-icon-item>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouvelle Marque</h4>
+        <table>
+            <tr>
+                <th>Nom : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Marques d'imprimante" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.add()" raised>Nouvelle Marque</paper-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune marque...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted></paper-datatable-column>
+                <paper-datatable-column header="Nom" property="name" type="Object" tooltip="Some title" sortable></paper-datatable-column>
+                <paper-datatable-column header="Détruire" property="delete" type="String" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon>
+                    <template>
+                        <paper-button ng-click="commandsdefault.delete()" raised>Détruire</paper-button>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouveau Modèle</h4>
+        <table>
+            <tr>
+                <th>Nom : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Modèle d'imprimante" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.add()" raised>Nouveau Modèle</paper-button>
+                <paper-dropdown-menu label="Marques">
+                    <paper-listbox class="dropdown-content" selected="0">
+                        <paper-item>Konica Minolta</paper-item>
+                        <paper-item>OKI</paper-item>
+                        <paper-item>Lexmark</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune modèle...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted></paper-datatable-column>
+                <paper-datatable-column header="Nom" property="name" type="Object" tooltip="Some title" sortable></paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouvelle Imprimante</h4>
+        <table>
+            <tr>
+                <th>Nom : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+            <tr>
+                <th>Localisation : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Angers...</paper-item>
+                            <paper-item>Saumur...</paper-item>
+                            <paper-item>Baugé...</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+            <tr>
+                <th>N° Série : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+            <tr>
+                <th>N° Inventaire : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+            <tr>
+                <th>Génération d'un ticket</th>
+                <th>
+                    <paper-checkbox></paper-checkbox>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Imprimantes" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.add()" raised>Nouvelle Imprimante</paper-button>
+                <paper-dropdown-menu label="Marque">
+                    <paper-listbox class="dropdown-content" selected="0">
+                        <paper-item>Konica Minolta</paper-item>
+                        <paper-item>OKI</paper-item>
+                        <paper-item>Lexmark</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+                <paper-dropdown-menu label="Modèle">
+                    <paper-listbox class="dropdown-content" selected="0">
+                        <paper-item>Konica Minolta</paper-item>
+                        <paper-item>OKI</paper-item>
+                        <paper-item>Lexmark</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune imprimante...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted></paper-datatable-column>
+                <paper-datatable-column header="Nom" property="name" type="String" tooltip="Some title" sortable></paper-datatable-column>
+                <paper-datatable-column header="Localisation" property="localisation" type="String" tooltip="Some title" sortable></paper-datatable-column>
+                <paper-datatable-column header="N° Serie" property="serial" type="String" tooltip="Some title" sortable></paper-datatable-column>
+                <paper-datatable-column header="N° Inventaire" property="inventory" type="String" tooltip="Some title" sortable></paper-datatable-column>
+                <paper-datatable-column header="Maintencance" property="maintenance" type="String" tooltip="Some title" sortable></paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouvelle Maintenance</h4>
+        <table>
+            <tr>
+                <th>Nom : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Maintenance d'imprimante" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.add()" raised>Nouvelle Maintenance</paper-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune maintenance...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted></paper-datatable-column>
+                <paper-datatable-column header="Nom" property="name" type="Object" tooltip="Some title" sortable></paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+
 
 </section>

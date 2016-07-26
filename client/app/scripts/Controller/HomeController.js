@@ -9,7 +9,7 @@ angular.module('printa').controller('HomeTableController', function ($scope, Pri
 
         modelprinter.then(function (result) {
 
-            var model = ModelsService.getModel(result[0].structure_id);
+            var model = ModelsService.getModel(result[0].model_id);
 
             model.then(function (result) {
 

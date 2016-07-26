@@ -6,8 +6,11 @@ angular.module('printa').service('UsersPermissionsService', ['Restangular', 'Pri
         getUsersPermissions: function(){
             return userspermissions.getList().$object;
         },
-        getUserPermission: function(id){
-            return PrintaRestangular.one('users_permissions', id).get();
+        getUserPermissionByUser: function(user_id){
+            return PrintaRestangular.one('users_permissions').get({user_id : user_id});
+        },
+        getUserPermissionByPermission: function(permission_id){
+            return PrintaRestangular.one('users_permissions').get({permission_id : permission_id});
         },
         newUserPermission: function(statuData){
             return userspermissions.post(statuData);

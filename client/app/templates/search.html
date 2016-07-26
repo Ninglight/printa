@@ -1,62 +1,85 @@
 <section tabindex="-1">
 
-    <div class="wrap horizontal center">
-        <!-- #GlobaleItem -->
+    <!-- #ResearchItem -->
+    <div class="wrap horizontal">
+
         <paper-material elevation="2">
-            <input type="date" name="name" value="">
+
+            <h2>Selectionnez une localisation</h2>
+
+            <div class="wrap horizontal center">
+                <div class="mtrl-search-select">
+                    <paper-dropdown-menu label="Ville">
+                        <paper-listbox class="dropdown-content">
+                            <paper-item>Angers</paper-item>
+                            <paper-item>Saumur</paper-item>
+                            <paper-item>Baugé</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </div>
+
+                <div class="mtrl-search-select">
+                    <paper-dropdown-menu>
+                        <paper-listbox class="dropdown-content">
+
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </div>
+
+                <div class="mtrl-search-select">
+                    <paper-dropdown-menu>
+                        <paper-listbox class="dropdown-content">
+
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </div>
+            </div>
+
+            <div class="right">
+                <paper-button ng-click="search.load()" raised>Recherche</paper-button>
+            </div>
         </paper-material>
 
         <paper-material class="mtrl-search-chart" elevation="2">
-            <google-chart type='pie' options='{"title": "Utilisation au sein du service", "backgroundColor": "transparent", "legend": "none"}' cols='[{"label":"printer-name", "type":"string"}, {"label":"printer-counter", "type":"number"}]' rows='[["copdsi01", 1289],["copdsi02", 1245],["copdsi03", 2564], ["copdsi04", 2547], ["copdsi04", 521]]'></google-chart>
+
+            <h2>Utilisation au sein du service</h2>
+
+            <google-chart type='pie' options='{"title": "", "backgroundColor": "transparent", "legend": "none"}' cols='[{"label":"printer-name", "type":"string"}, {"label":"printer-counter", "type":"number"}]' rows='[["copdsi01", 1289],["copdsi02", 1245],["copdsi03", 2564], ["copdsi04", 2547], ["copdsi04", 521]]'></google-chart>
+
         </paper-material>
 
-        <!-- #Item1 -->
-        <paper-card class="mtrl-search-item" image="images/printer/printers.svg">
-            <div class="card-content">
-                copdsi01
-                <div class="card-actions">
-                    <div class="wrap horizontal">
-                        <paper-button raised>PLus d'informations</paper-button>
-                    </div>
-                </div>
-            </paper-card>
-
-            <!-- #Item2 -->
-            <paper-card class="mtrl-search-item" image="images/printer/printers.svg">
-                <div class="card-content">
-                    copdsi01
-                    <div class="card-actions">
-                        <div class="wrap horizontal">
-                            <paper-button raised>PLus d'informations</paper-button>
-                        </div>
-                    </div>
-                </paper-card>
-
-                <!-- #Item3 -->
-                <paper-card class="mtrl-search-item" image="images/printer/printers.svg">
-                    <div class="card-content">
-                        copdsi01
-                        <div class="card-actions">
-                            <div class="wrap horizontal">
-                                <paper-button raised>PLus d'informations</paper-button>
-                            </div>
-                        </div>
-                    </paper-card>
-
-                    <!-- #Item4 -->
-                    <paper-card class="mtrl-search-item" image="images/printer/printers.svg">
-                        <div class="card-content">
-                            copdsi01
-                            <div class="card-actions">
-                                <div class="wrap horizontal">
-                                    <paper-button raised>PLus d'informations</paper-button>
-                                </div>
-                            </div>
-                        </paper-card>
+        <paper-material class="mtrl-search-list" elevation="2">
+            <paper-menu role="listbox">
+                <paper-icon-item ui-sref="printer({id: 1})">
+                    <img src="../images/printer/printer.svg" alt="Illustration d'une imprimante"></img>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line>
+                        <div>copdsi01 : Modèle</div>
+                        <div secondary>Angers > Hotel du département > DLSI</div>
+                    </paper-item-body>
+                </paper-icon-item>
+                <paper-icon-item ui-sref="printer({id: 2})">
+                    <img src="../images/printer/printer.svg" alt="Illustration d'une imprimante"></img>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line>
+                        <div>copdsi02 : Modèle</div>
+                        <div secondary>Angers > Hotel du département > DLSI</div>
+                    </paper-item-body>
+                </paper-icon-item>
+                <paper-icon-item ui-sref="printer({id: 3})">
+                    <img src="../images/printer/printer.svg" alt="Illustration d'une imprimante"></img>
+                    <iron-icon></iron-icon>
+                    <paper-item-body two-line class="layout vertical">
+                        <div>copdsi03 : Modèle</div>
+                        <div secondary>Angers > Hotel du département > DLSI</div>
+                    </paper-item-body>
+                </paper-icon-item>
+            </paper-menu>
+        </paper-material>
 
 
 
-                    </div>
+    </div>
 
 
-                </section>
+</section>

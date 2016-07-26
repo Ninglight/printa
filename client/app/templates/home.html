@@ -3,19 +3,21 @@
     <div class="wrap horizontal">
         <paper-material class="mtrl-index" elevation="1">
             <div class="mtrl-index-text">
-                <h1 class="page-title" tabindex="-1">Bienvenue sur Printa</h1>
+                <h1 class="page-title" tabindex="-1">Bienvenue sur l'application Printa</h1>
                 <div class="mtrl-text">
                     <p>
-                        Application de gestion du parc d'impression.
+                        Application de gestion du parc d'impression. Au travers de celle-ci vous pourrez rechercher selon la localisation,
+                        visualisation les données d'impressions.
+
                     </p>
                 </div>
             </div>
             <div class="wrap horizontal">
                 <div class="mtrl-index-box">
                     <paper-material class="mtrl-index-link mtrl-search" elevation="1" ui-sref="search">
-                        <img id="glass" src="images/section/search.svg" alt="Ajouter une imprimante"/>
+                        <img id="glass" src="images/section/search.svg" alt="Recherchez une imprimante"/>
                         <p class="mtrl-text">
-                            Recherche une imprimante
+                            Recherchez une imprimante
                         </p>
                     </paper-material>
                 </div>
@@ -23,7 +25,23 @@
                     <paper-material class="mtrl-index-link mtrl-view" elevation="1" ui-sref="view">
                         <img src="images/section/view.svg" alt="Ajouter une imprimante"/>
                         <p class="mtrl-text">
-                            Visualiser les compteurs
+                            Visualisez les compteurs
+                        </p>
+                    </paper-material>
+                </div>
+                <div class="mtrl-index-box" ng-if="operate || network || material || admin">
+                    <paper-material class="mtrl-index-link mtrl-install" elevation="1" ui-sref="view">
+                        <img src="images/section/install.svg" alt="Suivez l'installation des imprimantes"/>
+                        <p class="mtrl-text">
+                            Suivez l'installation des imprimantes
+                        </p>
+                    </paper-material>
+                </div>
+                <div class="mtrl-index-box" ng-if="admin">
+                    <paper-material class="mtrl-index-link mtrl-manage" elevation="1" ui-sref="view">
+                        <img src="images/section/manage.svg" alt="Administrez les données"/>
+                        <p class="mtrl-text">
+                            Administrez les données
                         </p>
                     </paper-material>
                 </div>
@@ -37,13 +55,13 @@
             <div class="mtrl-text">
                 <p>
                     Afin de permettre une navigation plus agréable, l'accès aux fonctionnalités se fait via le menu de droite qui vous accompagne durant toute votre navigation.
-                    Pour obtenir une aide supplémentaire, veuillez activer l'option "Aide", symbolisé par un point d'interrogation, situé en haut à droite de votre écran.
+                    Pour obtenir une aide supplémentaire, veuillez cliquer sur l'option "Aide", symbolisé par un point d'interrogation, situé en haut à droite de votre écran.
                 </p>
             </div>
         </paper-material>
     </div>
 
-    <div id="mtrl-home-table" class="mtrl-table" ng-controller="HomeTableController">
+    <div id="mtrl-home-table" class="mtrl-table" ng-controller="HomeTableController" ng-if="admin">
         <paper-dialog id="editDialog" with-backdrop style="max-width:500px;min-height:300px;">
             <template is="dom-repeat" items="{{selectedItems}}" filter="{{onlyFirst}}">
                 <h2>Item #<span>{{item.id}}</span></h2>
@@ -121,7 +139,7 @@
 
 
 
-    <paper-material class="mtrl-view" elevation="1">
+    <paper-material class="mtrl-view" elevation="1" ng-if="admin">
         <google-chart type='area' options='{"title": "", "backgroundColor": "transparent"}' cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]' rows='[["Jan", 31],["Feb", 28],["Mar", 31]]'></google-chart>
     </paper-material>
 

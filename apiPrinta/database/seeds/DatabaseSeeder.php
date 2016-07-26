@@ -39,5 +39,13 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Database', 'direction' => 'Insertion', 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")]
         ]);
 
+        DB::table('permissions')->insert([
+            ['name' => 'Opérateur Système', 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")],
+            ['name' => 'Réseau', 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")],
+            ['name' => 'Matériel', 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")],
+            ['name' => 'Administrateur', 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")]
+
+        ]);
+
     }
 }

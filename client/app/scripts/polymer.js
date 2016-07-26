@@ -43,6 +43,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)', appName);
     });
 
+
+
     // paper-datatable
 
     /*var table = document.querySelector('.mtrl-table');

@@ -4,5 +4,162 @@
         <h2><iron-icon icon="hardware:keyboard-arrow-left" ></iron-icon>Gestion des commandes SNMP pour les compteurs</h2>
     </div>
 
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouvelle Commande par défault pour la marque :</h4>
+        <table>
+            <tr>
+                <th>Action : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Récupération, A4, Recto, Couleur</paper-item>
+                            <paper-item>Récupération, A4, Recto, Noir & Blanc</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+            <tr>
+                <th>OID : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Commandes par défault liées à la marque" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commandsdefault.delete()" raised>Nouvelle commande</paper-button>
+                <paper-dropdown-menu label="Marques">
+                    <paper-listbox class="dropdown-content" selected="0">
+                        <paper-item>Konica Minolta</paper-item>
+                        <paper-item>Lexmark</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune commandes...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Action" property="action" type="String" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Modèle" property="model" type="String" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="OID" property="oid" type="String" sortable tooltip="Some title" dialog format-value="{{clip}}" edit-icon>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Date de création" property="created_at" type="String" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <hr>
+
+    <div class="mtrl-manage-duplicate center">
+        <paper-button ng-click="commandsdefault.duplicate()" raised>Dupliquer</paper-button>
+        <h3>Sélectionnez les commandes à dupliquer et celle recevant les commandes par leur case à cocher.</h3>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h4>Nouvelle Commande pour le modèle : </h4>
+        <table>
+            <tr>
+                <th>Action : </th>
+                <th>
+                    <paper-dropdown-menu no-label-float>
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Récupération, A4, Recto, Couleur</paper-item>
+                            <paper-item>Récupération, A4, Recto, Noir & Blanc</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </th>
+            </tr>
+            <tr>
+                <th>OID : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Commandes liées au modèle choisi" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.delete()" raised>Nouvelle commande</paper-button>
+                <paper-dropdown-menu label="Modèles">
+                    <paper-listbox class="dropdown-content" selected="0">
+                        <paper-item>E1524</paper-item>
+                        <paper-item>A6487</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune commandes...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Action" property="action" type="Object" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="OID" property="oid" type="Integer" sortable tooltip="Some title" dialog format-value="{{clip}}" edit-icon>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Date de création" property="created_at" type="String" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
 
 </section>

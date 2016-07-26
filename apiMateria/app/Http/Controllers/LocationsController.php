@@ -27,23 +27,17 @@ class LocationsController extends Controller
         $location_id = $request->location_id;
 
         $location_test_name = Location::where(['name' => $name])->get();
-        $location_test_id = Location::where(['id' => $location_id])->get();
 
-        if($location_test_name->count() == 0 & $location_test_id->count() == 1 ||
-        $location_test_name->count() == 0 & $location_id == ''){
+        if($location_test_name->count() == 0){
 
             $location = Location::create([
                 'name' => $name,
                 'location_id' => $location_id
             ]);
 
-        } elseif($location_test_id->count() == 1 || $location_id == '') {
+        } else {
 
             return Response::json("location name exists", 200, [], JSON_NUMERIC_CHECK);
-
-        } elseif($location_test_name->count() == 0) {
-
-            return Response::json("location not in database", 200, [], JSON_NUMERIC_CHECK);
 
         }
 
@@ -58,22 +52,16 @@ class LocationsController extends Controller
         $location_id = $request->location_id;
 
         $location_test_name = Location::where(['name' => $name])->get();
-        $location_test_id = Location::where(['id' => $location_id])->get();
 
-        if($location_test_name->count() == 0 & $location_test_id->count() == 1 ||
-        $location_test_name->count() == 0 & $location_id == ''){
+        if($location_test_name->count() == 0){
 
             $location->name = $name;
             $location->location_id = $location_id;
             $location->save();
 
-        } elseif($location_test_id->count() == 1 || $location_id == '') {
+        } else {
 
             return Response::json("location name exists", 200, [], JSON_NUMERIC_CHECK);
-
-        } elseif($location_test_name->count() == 0) {
-
-            return Response::json("location not in database", 200, [], JSON_NUMERIC_CHECK);
 
         }
 

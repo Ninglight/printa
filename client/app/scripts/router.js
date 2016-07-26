@@ -59,7 +59,7 @@ angular.module('printa').config(['$stateProvider', '$urlRouterProvider', '$authP
             'header' : {
                 templateUrl: '../templates/headerView.html',
                 controller: function($scope){
-                    $scope.name = "Bienvenue sur Printa",
+                    $scope.name = "Printa",
                     $scope.subname = "Réconciliez vous avec les imprimantes";
                     $scope.icon = true;
                 }
@@ -86,7 +86,30 @@ angular.module('printa').config(['$stateProvider', '$urlRouterProvider', '$authP
                 templateUrl: '../templates/left.html'
             },
             'main' : {
-                templateUrl: '../templates/search.html'
+                templateUrl: '../templates/search.html',
+                controller: 'SearchController as search'
+            }
+        }
+    })
+    .state('printer', {
+        url: "/printer/:id",
+        views: {
+            'header' : {
+                templateUrl: '../templates/headerView.html',
+                controller: function($scope){
+                    $scope.name = "Fiche de l'imprimante : Nom",
+                    $scope.subname = "Localisation";
+                }
+            },
+            'left' : {
+                templateUrl: '../templates/left.html'
+            },
+            'main' : {
+                templateUrl: '../templates/printer.html',
+                controller: function ($stateParams) {
+                    // If we got here from a url of /contacts/42
+                    expect($stateParams).toBe({contactId: "42"});
+                }
             }
         }
     })
@@ -108,6 +131,14 @@ angular.module('printa').config(['$stateProvider', '$urlRouterProvider', '$authP
                 templateUrl: '../templates/view.html'
             }
         }
+    })
+    .state('view.printing', {
+        url: '/printing',
+        templateUrl: '../templates/view/printing.html'
+    })
+    .state('view.counter', {
+        url: '/counter',
+        templateUrl: '../templates/view/counter.html'
     })
     .state('install', {
         url: '/install',
@@ -144,6 +175,23 @@ angular.module('printa').config(['$stateProvider', '$urlRouterProvider', '$authP
             }
         }
     })
+    .state('help', {
+        url: '/help',
+        views: {
+            'header' : {
+                templateUrl: '../templates/headerView.html',
+                controller: function($scope){
+                    $scope.name = "Aide à la navigation sur l'application"
+                }
+            },
+            'left' : {
+                templateUrl: '../templates/left.html'
+            },
+            'main' : {
+                templateUrl: '../templates/helpView.html'
+            }
+        }
+    })
     .state('manage.error', {
         url: '/error',
         templateUrl: '../templates/manage/error.html'
@@ -163,6 +211,10 @@ angular.module('printa').config(['$stateProvider', '$urlRouterProvider', '$authP
     .state('manage.page', {
         url: '/page',
         templateUrl: '../templates/manage/page.html'
+    })
+    .state('manage.ticket', {
+        url: '/ticket',
+        templateUrl: '../templates/manage/ticket.html'
     })
     .state('manage.printer', {
         url: '/printer',
@@ -185,7 +237,7 @@ angular.module('printa').config(['$stateProvider', '$urlRouterProvider', '$authP
         }
     });
 
-}]).run(function($rootScope, $state, Restangular, PersonaRestangular, UsersStructuresService, StructuresService) {
+}]).run(function($rootScope, $state, Restangular, PersonaRestangular, UsersService, UsersStructuresService, StructuresService, UsersPermissionsService, PermissionsService) {
 
     // $stateChangeStart is fired whenever the state changes. We can use some parameters
     // such as toState to hook into details about the state as it is changing
@@ -205,26 +257,7 @@ angular.module('printa').config(['$stateProvider', '$urlRouterProvider', '$authP
             // on the user being logged in
             $rootScope.authenticated = true;
 
-            // Putting the user's data on $rootScope allows
-            // us to access it anywhere across the app. Here
-            // we are grabbing what is in local storage
-            $rootScope.currentUser = user;
-
-            var userstructure = UsersStructuresService.getUserStructure(user.id);
-
-            userstructure.then(function (response) {
-
-                var structure = StructuresService.getStructure(response[0].structure_id);
-
-                structure.then(function (response) {
-
-                    // Putting the user's structure data on $rootScope allows
-                    // us to access it anywhere across the app
-                    $rootScope.currentUserStructure = response;
-
-                });
-
-            });
+            UsersService.getAdditionnalUserDataToRootScope(user);
 
             // If the user is logged in and we hit the auth route we don't need
             // to stay there and can send the user to the main state

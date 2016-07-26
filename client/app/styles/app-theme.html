@@ -124,6 +124,7 @@ paper-scroll-header-panel {
 
 #header-title img {
     width: 120px;
+    float: left;
 }
 
 #header-img img {
@@ -187,7 +188,8 @@ paper-menu a {
 
 #mainToolbar .bottom-container {
     @apply(--paper-font-subhead);
-
+    text-transform: uppercase;
+    font-style: italic;
     margin-left: 48px;
     /* Required for main area's paper-scroll-header-panel custom condensing transformation */
     -webkit-transform-origin: left center;
@@ -235,10 +237,9 @@ paper-material {
     @apply(--layout-justified);
 }
 
-
-.mtrl-search-card {
-    width: 160px;
-    margin: 10px auto;
+.back-link {
+    text-decoration: none;
+    width: 100%;
 }
 
 .left{
@@ -260,6 +261,25 @@ paper-material {
 h1 {
     font-size: 40px;
     font-weight: 300;
+}
+
+#header-title h1 {
+    float: left;
+}
+
+paper-material h2 {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+section {
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+.main {
+    height: 100%;
 }
 
 footer {
@@ -286,7 +306,7 @@ section[tabindex="-1"]:focus { outline: none; }
         margin-left: 16px;
     }
 
-    #mainToolbar.tall .app-name {
+    #mainToolbar.tall .app-name h1 {
         font-size: 24px;
         font-weight: 400;
     }

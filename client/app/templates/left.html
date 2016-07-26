@@ -7,7 +7,9 @@
 <paper-toolbar id="userToolbar">
     <div class="user" ng-if="authenticated">
         <div class="user-img">
-            <img src="images/profil/admin.png" alt=""/>
+            <img ng-if="invite" src="images/profil/user.png" alt=""/>
+            <img ng-if="operate || network || material" src="images/profil/network.png" alt=""/>
+            <img ng-if="admin" src="images/profil/admin.png" alt=""/>
         </div>
         <div class="user-details">
             <p class="user-name">{{currentUser.first_name}} {{currentUser.name}}</p>
@@ -46,6 +48,11 @@
     <paper-item ui-sref="manage">
         <iron-icon icon="view-headline"></iron-icon>
         <span>Administration</span>
+    </paper-item>
+
+    <paper-item ui-sref="help">
+        <iron-icon icon="help"></iron-icon>
+        <span>Aide à la navigation</span>
     </paper-item>
 
 </paper-menu>

@@ -1,4 +1,4 @@
-angular.module('printa').controller('SearchController', function ($scope, LocationsService, PrintersService) {
+angular.module('printa').controller('PrinterController', function ($scope, LocationsService, PrintersService) {
 
     var vm = this;
     $scope.printers = null;

@@ -4,5 +4,49 @@
         <h2><iron-icon icon="hardware:keyboard-arrow-left" ></iron-icon>Gestion des utilisateurs</h2>
     </div>
 
+    <div class="mtrl-manage-list" role="listbox">
+        <paper-icon-item>
+            <img src="../images/profil/network.png" alt="">
+            <iron-icon></iron-icon>
+            <paper-item-body two-line>
+                <div>Dominique Veille</div>
+                <div secondary>Matériel</div>
+            </paper-item-body>
+        </paper-icon-item>
+        <paper-icon-item>
+            <img src="../images/profil/admin.png" alt="">
+            <iron-icon></iron-icon>
+            <paper-item-body two-line>
+                <div>Valentin Bourreau</div>
+                <div secondary>Administrateur</div>
+            </paper-item-body>
+        </paper-icon-item>
+        <paper-icon-item>
+            <img src="../images/profil/user.png" alt="">
+            <iron-icon></iron-icon>
+            <paper-item-body two-line>
+                <div>
+                    <paper-dropdown-menu label="Utilisateur">
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Albert Machin</paper-item>
+                            <paper-item>Truc Dupont</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                    <paper-dropdown-menu label="Permission">
+                        <paper-listbox class="dropdown-content" selected="0">
+                            <paper-item>Opérateur Système</paper-item>
+                            <paper-item>Réseau</paper-item>
+                            <paper-item>Matériel</paper-item>
+                            <paper-item>Administrateur</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                    <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+                </div>
+            </paper-item-body>
+        </paper-icon-item>
+
+
+    </div>
+
 
 </section>

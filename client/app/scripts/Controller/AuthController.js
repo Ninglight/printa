@@ -1,4 +1,4 @@
-angular.module('printa').controller('AuthController', function ($auth, $state, $rootScope, Restangular, PersonaRestangular, UsersStructuresService, StructuresService) {
+angular.module('printa').controller('AuthController', function ($auth, $state, $rootScope, Restangular, PersonaRestangular, UsersService, UsersStructuresService, StructuresService, UsersPermissionsService, PermissionsService) {
 
 	var vm = this;
 
@@ -34,25 +34,7 @@ angular.module('printa').controller('AuthController', function ($auth, $state, $
 				// on the user being logged in
 				$rootScope.authenticated = true;
 
-				// Putting the user's data on $rootScope allows
-				// us to access it anywhere across the app
-				$rootScope.currentUser = response.user;
-
-				var userstructure = UsersStructuresService.getUserStructure(response.user.id);
-
-		        userstructure.then(function (response) {
-
-		            var structure = StructuresService.getStructure(response[0].structure_id);
-
-					structure.then(function (response) {
-
-						// Putting the user's structure data on $rootScope allows
-						// us to access it anywhere across the app
-						$rootScope.currentUserStructure = response;
-
-					});
-
-		        });
+				UsersService.getAdditionnalUserDataToRootScope(response.user);
 
 				// Everything worked out so we can now redirect to
 				// the users state to view the data

@@ -1,9 +1,85 @@
 <section tabindex="-1">
 
-    <div>
-        <paper-material elevation="1">
-            <p>{{printer.serial_number}}</p>
-        </paper-material>
+    <div class="mtrl-view-tabs">
+
+        <div class="wrap horizontal center">
+
+            <paper-material ui-sref="view.printing">
+                <img src="../images/profil/user.png" alt="">
+                <br/>
+                <h2>Impression utilisateur</h2>
+            </paper-material>
+
+            <paper-material ui-sref="view.counter">
+                <img src="../images/counter.svg" alt="">
+                <br/>
+                <h2>Compteur des imprimantes</h2>
+            </paper-material>
+
+        </div>
+
     </div>
+
+
+
+    <div ui-view></div>
+<!--
+<paper-material class="mtrl-view">
+    <div class="mtrl-printer-chart transparent">
+        <paper-toggle-button>Activer le calcul des coûts</paper-toggle-button>
+        <paper-toggle-button>Vision Mensuel</paper-toggle-button>
+        <google-chart type='area' options='{"title": "", "backgroundColor": "transparent"}' data='[["Month", "2016"], ["Janvier", 15000],["Fevrier", 15400],["Mars", 15600],["Avril", 15800],["Mai", 15900],["Juin", 16200],["Juillet", 16300],["Août", 16400],["Septembre", 16700],["Octobre", 17000],["Novembre", 17500],["Décembre", 17800]]' rows='[]'></google-chart>
+    </div>
+</paper-material>
+
+<paper-datatable-card class="mtrl-printer-datatable" id="datatableCard" header="Users" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+    <div toolbar-main>
+        <paper-input value="{{searchTerm}}" on-input="retrieveResults" label="Search..." style="display:inline-block" no-label-float>
+            <div prefix>
+                <iron-icon icon="search"></iron-icon>
+            </div>
+        </paper-input>
+        <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+    </div>
+    <div toolbar-select>
+        <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+    </div>
+    <div toolbar-select-single>
+        <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+    </div>
+    <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+        <div no-results>
+            Loading or no more items...
+        </div>
+        <paper-datatable-column header="ID" property="id" type="String" tooltip="Some title" sortable align="center" style="min-width: 40px" sorted></paper-datatable-column>
+        <paper-datatable-column header="Name" property="name" type="Object" tooltip="Some title" sortable style="min-width: 160px">
+            <template>
+                <span>{{value.first}}</span>
+                <span>{{value.last}}</span>
+            </template>
+        </paper-datatable-column>
+        <paper-datatable-column header="Birthday" property="birthday" type="Date" tooltip="Some title" sortable style="min-width: 40px" inactive></paper-datatable-column>
+        <paper-datatable-column header="About me" property="about" type="String" sortable tooltip="Some title" style="min-width: 320px" dialog format-value="{{clip}}" edit-icon>
+            <template>
+                <paper-textarea value="{{value}}" no-label-float></paper-textarea>
+            </template>
+        </paper-datatable-column>
+        <paper-datatable-column header="Location" property="location" type="Object" tooltip="Some title" style="min-width: 300px" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon>
+            <template>
+                <span>
+
+                    <google-map latitude="0" longitude="7" style="height:255px;margin:20px 0px;" zoom="0">
+                    <google-map-marker latitude="{{value.lat}}" longitude="{{value.lng}}" draggable="true"></google-map-marker>
+                </google-map>
+
+            <google-map latitude="{{value.lat}}" longitude="{{value.lng}}" style="height:300px;margin:20px 0px;" zoom="3">
+                <google-map-marker latitude="{{value.lat}}" longitude="{{value.lng}}" draggable="true"></google-map-marker>
+            </google-map>
+        </span>
+    </template>
+</paper-datatable-column>
+</paper-datatable>
+</paper-datatable-card>
+-->
 
 </section>

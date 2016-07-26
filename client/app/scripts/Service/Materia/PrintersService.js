@@ -9,6 +9,9 @@ angular.module('printa').service('PrintersService', ['Restangular', 'MateriaRest
         getPrinter: function(id){
             return MateriaRestangular.one('printers', id).get();
         },
+        getPrinterByLocation: function(id){
+            return MateriaRestangular.one('printers', id).get({location_id : location_id});
+        },
         newPrinter: function(printerData){
             return printers.post(printerData);
         }

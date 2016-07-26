@@ -1,0 +1,91 @@
+<section tabindex="-1">
+
+    <!-- #ResearchItem -->
+    <div class="wrap horizontal">
+
+        <a href=javascript:history.go(-1) class="back-link">
+            <div class="mtrl-intro">
+                <h2><iron-icon icon="hardware:keyboard-arrow-left" ></iron-icon>Retour</h2>
+            </div>
+        </a>
+
+
+        <paper-material elevation="2" class="mtrl-printer">
+
+            <div class="wrap horizontal center">
+
+                <div class="mtrl-printer-img">
+                    <img src="../images/printer/mfp.png" alt="" />
+                </div>
+
+                <div class="mtrl-printer-primary">
+                    <div class="right">
+                        <paper-button disabled>Statut</paper-button>
+                    </div>
+
+                    <ul>
+                        <li>Nom :</li>
+                        <li>Marque & Modèle :</li>
+                        <li>Localisation :</li>
+                    </ul>
+
+                </div>
+
+                <div class="mtrl-printer-second">
+                    <ul>
+                        <li>N°Inventaire :</li>
+                        <li>N°Série :</li>
+                        <li>Maintenance du produit :</li>
+                        <li>Etat de l'installation : </li>
+                    </ul>
+
+                </div>
+
+                <paper-material class="mtrl-view">
+                    <div class="mtrl-printer-chart transparent">
+                        <paper-toggle-button>Activer le calcul des coûts</paper-toggle-button>
+                        <paper-toggle-button>Vision Mensuel</paper-toggle-button>
+                        <google-chart type='area' options='{"title": "", "backgroundColor": "transparent"}' data='[["Month", "2016"], ["Janvier", 15000],["Fevrier", 15400],["Mars", 15600],["Avril", 15800],["Mai", 15900],["Juin", 16200],["Juillet", 16300],["Août", 16400],["Septembre", 16700],["Octobre", 17000],["Novembre", 17500],["Décembre", 17800]]' rows='[]'></google-chart>
+                    </div>
+                </paper-material>
+
+                <paper-material class="mtrl-printer-list" elevation="2">
+                    <paper-menu role="listbox">
+                        <paper-icon-item ui-sref="printer({id: 1})">
+                            <img src="../images/coins.svg" alt="Illustration de pièces de monnaie"></img>
+                            <iron-icon></iron-icon>
+                            <paper-item-body two-line>
+                                <div>Information page (format, side, color, type)</div>
+                                <div secondary>Prix</div>
+                            </paper-item-body>
+                        </paper-icon-item>
+                        <paper-icon-item ui-sref="printer({id: 2})">
+                            <img src="../images/coins.svg" alt="Illustration de pièces de monnaie"></img>
+                            <iron-icon></iron-icon>
+                            <paper-item-body two-line>
+                                <div>Information page (format, side, color, type)</div>
+                                <div secondary>Prix</div>
+                            </paper-item-body>
+                        </paper-icon-item>
+                        <paper-icon-item ui-sref="printer({id: 3})">
+                            <img src="../images/coins.svg" alt="Illustration de pièces de monnaie"></img>
+                            <iron-icon></iron-icon>
+                            <paper-item-body two-line class="layout vertical">
+                                <div>Information page (format, side, color, type)</div>
+                                <div secondary>Prix</div>
+                            </paper-item-body>
+                        </paper-icon-item>
+                    </paper-menu>
+                </paper-material>
+
+
+            </div>
+
+        </paper-material>
+
+
+
+    </div>
+
+
+</section>

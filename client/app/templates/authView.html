@@ -1,34 +1,37 @@
-<section tabindex="-1" ng-controller="AuthController">
+<section tabindex="-1">
 
     <div class="wrap horizontal center">
-        <paper-material class="mtrl-login-box" elevation="2">
+        <div class="mtrl-auth">
+            <paper-material elevation="1">
 
-            <div class="center">
-                <img src="images/printers.png" alt="" />
-                <h1 class="app-name">Application Printa</h1>
-                <span>Connectez-vous avec vos identifiants du Maine et Loire</span>
-            </div>
-
-            <div>
-                <div class="left">
-                    <paper-input-container>
-                        <label>Adresse mail</label>
-                        <input is="iron-input" type="text" ng-model="auth.email"></input>
-                        <div suffix>@maine-et-loire.fr</div>
-                    </paper-input-container>
-
-                    <paper-input-container>
-                        <label>Mot de passe</label>
-                        <input is="iron-input" type="password" ng-model="auth.password"></input>
-                    </paper-input-container>
+                <div class="center">
+                    <img src="images/printers.png" alt="" />
+                    <h1 class="app-name">Application Printa</h1>
+                    <span>Connectez-vous avec vos identifiants du Maine et Loire</span>
                 </div>
 
-                <div class="right">
-                    <paper-button ng-click="auth.login()" raised>Connexion</paper-button>
-                </div>
-            </div>
+                <div>
+                    <div class="left">
+                        <paper-input-container>
+                            <label>Adresse mail</label>
+                            <input is="iron-input" type="text" ng-model="auth.email"></input>
+                            <div suffix>@maine-et-loire.fr</div>
+                        </paper-input-container>
 
-        </paper-material>
+                        <paper-input-container>
+                            <label>Mot de passe</label>
+                            <input is="iron-input" type="password" ng-model="auth.password"></input>
+                        </paper-input-container>
+                    </div>
+
+                    <div class="right">
+                        <paper-button ng-click="auth.login()" raised>Connexion</paper-button>
+                    </div>
+                </div>
+
+            </paper-material>
+        </div>
+
     </div>
 
     <paper-toast id="toastError" class="mtrl-toast-error fit-bottom" text="{{loginErrorText}}"></paper-toast>

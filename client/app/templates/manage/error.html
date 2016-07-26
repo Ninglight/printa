@@ -1,7 +1,84 @@
-<section tabindex="-1">
+<section tabindex="-1" class="mtrl-manage-error">
 
     <div class="mtrl-intro" ui-sref="manage">
         <h2><iron-icon icon="hardware:keyboard-arrow-left" ></iron-icon>Gestion des erreurs d'exécution de DataPrinta</h2>
+    </div>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-error-datatable" id="datatableCard" header="Données d'erreur" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-input value="{{searchTerm}}" on-input="retrieveResults" label="Recherche..." style="display:inline-block" no-label-float>
+                    <div prefix>
+                        <iron-icon icon="search"></iron-icon>
+                    </div>
+                </paper-input>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune impression...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted></paper-datatable-column>
+                <paper-datatable-column header="Type" property="name" type="Object" tooltip="Some title" sortable></paper-datatable-column>
+                <paper-datatable-column header="Table cible" property="created_at" type="Date" tooltip="Some title" sortable style="min-width: 40px" inactive></paper-datatable-column>
+                <paper-datatable-column header="Colonne cible" property="quantity" type="Integer" sortable tooltip="Some title" dialog format-value="{{clip}}" edit-icon></paper-datatable-column>
+                <paper-datatable-column header="Informations" property="format" type="String" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon></paper-datatable-column>
+                <paper-datatable-column header="Date de création" property="color" type="String" tooltip="Some title" cell-style="font-family:monospace;" dialog format-value="{{formatLatLng}}" edit-icon></paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
+    </div>
+
+    <hr>
+
+    <paper-material class="mtrl-manage-item mtrl-manage-item-half">
+        <h3>Nouveau Type Erreur</h3>
+        <table>
+            <tr>
+                <th>Nom : </th>
+                <th>
+                    <paper-input no-label-float></paper-input>
+                </th>
+            </tr>
+        </table>
+        <div class="right">
+            <paper-button ng-click="error.update()" raised>Ajouter</paper-button>
+        </div>
+    </paper-material>
+
+    <div class="mtrl-paper-datatable-box">
+        <paper-datatable-card class="mtrl-manage-datatable" id="datatableCard" header="Commandes liées au modèle choisi" page-size="10" data-source="{{data}}" id-property="id" selected-ids="{{selectedIds}}">
+            <div toolbar-main>
+                <paper-button ng-click="commands.delete()" raised>Nouveau type erreur</paper-button>
+                <paper-icon-button icon="cached" on-tap="retrieveResults"></paper-icon-button>
+            </div>
+            <div toolbar-select>
+                <paper-icon-button icon="delete" on-tap="deleteSelected"></paper-icon-button>
+            </div>
+            <div toolbar-select-single>
+                <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button>
+            </div>
+            <paper-datatable id="datatable" selectable multi-selection selected-items="{{selectedItems}}" on-row-tap="rowTapped">
+                <div no-results>
+                    Recherche ou aucune commandes...
+                </div>
+                <paper-datatable-column header="ID" property="id" type="Integer" tooltip="Some title" sortable sorted>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+                <paper-datatable-column header="Nom" property="name" type="Object" tooltip="Some title" sortable>
+                    <template>
+                        <paper-input value="{{value}}" no-label-float maxlength="40" char-counter></paper-input>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+        </paper-datatable-card>
     </div>
 
 
